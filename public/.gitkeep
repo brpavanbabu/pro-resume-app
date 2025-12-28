@@ -1,0 +1,52 @@
+# Public Folder for Static Files
+
+This folder is required for Stripe domain verification.
+
+## How It Works
+
+Vite automatically serves files from `public/` at your root URL:
+
+```
+public/stripe-verification-abc123.html  →  https://yoursite.com/stripe-verification-abc123.html
+public/robots.txt                        →  https://yoursite.com/robots.txt
+public/favicon.ico                       →  https://yoursite.com/favicon.ico
+```
+
+## Stripe Verification Steps
+
+1. **Download** the verification HTML file from Stripe Dashboard
+2. **Place** it in this `public/` folder
+3. **Deploy** to Vercel (via GitHub or CLI)
+4. **Verify** in Stripe Dashboard (click "Verify Domain")
+
+## File Structure Should Look Like This:
+
+```
+ProResume/
+├── public/
+│   ├── stripe-verification-xxxxx.html  ⬅️ YOUR STRIPE FILE HERE
+│   └── .gitkeep                        (this file, for Git tracking)
+├── src/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Important Notes
+
+- The `public/` folder must be at the **root** of your project (same level as `package.json`)
+- The Stripe filename MUST match exactly what they gave you (with random characters)
+- After deploying, test the URL: `https://pro-resume-app.vercel.app/stripe-verification-xxxxx.html`
+- If you see the HTML page, click "Verify" in Stripe Dashboard
+
+## Need Help?
+
+If Stripe verification still fails:
+1. Check the filename matches exactly (case-sensitive)
+2. Wait 2-3 minutes after deploying for Vercel to update
+3. Clear your browser cache and test the URL again
+4. Check Vercel deployment logs to confirm the file was uploaded
+
